@@ -1,0 +1,21 @@
+#!/bin/bash
+
+LOG_DIR=./log
+
+printf "Hi Harshit!\nIt's $(date +'%a %b %d %H:%M')\n\n"
+
+echo "Which lab day is it today?"
+
+read -p "Enter: " lab_day
+
+
+# printf -v lab_day "%02d" $lab_day  `#To store 05 intead of 5 in lab_day (aesthetic purposes) `
+
+read -p "Move previous day files into a folder? (y/n) " move
+
+if [ $move = 'y' ]
+then
+ printf "Okay, moving Day %02d files to directory lab_%02d\n" "$($lab_day-1)" "$($lab_day-1)" # echo was not used since it does not support formatting variables.
+
+ mv lab$(lab_day-1)* lab$lab_day-1/
+fi
